@@ -1,5 +1,7 @@
 // Data Visualization . Parsons D+T
 // D.Mastretta
+// code structure based on Matthew Epler's class examples
+// Data extracted from WHO: http://apps.who.int/gho/data/node.main.623?lang=en
 // World Health Organization: Number of deaths due to HIV/AIDS by WHO Region
 // Countries with no published data are considered as 0 
 // publication years of data vary from 2001 to 2011
