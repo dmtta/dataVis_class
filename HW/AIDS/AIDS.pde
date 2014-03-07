@@ -76,9 +76,8 @@ void draw() {
   
   fill(255,0,0);
  textFont(texts);
-  text("Of the " +int(totalAIDS)+ " deaths by AIDS reported from 2001 to 2011 \n Africa's WHO Region reports "+int(AFRtotal)+ " more than " + int(AFRtotal/AMRtotal) + " times above the Americas, \n the second highest incidence region in the world.", width/2, height-95);
-  
-}
+  text("Of the " +int(totalAIDS)+ " deaths by AIDS reported from 2001 to 2011, Africa's WHO Region\nreports "+int(AFRtotal)+ ", adding up more than " + int(AFRtotal/AMRtotal) + " times above the Americas, \n region which holds the second highest incidence of this syndrome in the world.", width/2, height-95);
+  }
 
 
 void processData() {
