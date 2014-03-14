@@ -17,7 +17,7 @@ void setup() {
   size(1800, 800);
   creds = loadStrings("creds.csv");
   println(creds[0]);
-  newSearch = "RT please";
+  newSearch = "Mexico ";
   font = loadFont("Nove.vlw");
   textFont(font);
   myQuery = new ArrayList<String>();
