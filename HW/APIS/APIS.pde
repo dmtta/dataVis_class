@@ -69,7 +69,7 @@ void draw() {
   fill(255);
   rect (20,5,1500,20);
     fill(0);
-   text(" Latest Tweets pulled from the search: " + newSearch + " // Tweets in green are considered INFLUENTIAL and tweets in red are considered NOT INFLUENTIAL.", 20,20);
+   text(" Latest Tweets pulled from the search: " + newSearch + " // Blue: Very Influential // Green: Influential // Red: Not Influential.", 20,20);
   
   for (int i=0; i<myQuery.size();i++) {
 
@@ -77,6 +77,8 @@ void draw() {
         fill(200, 50, 50);
       } else if (followers.get(i) <= 2000){
         fill(255);
+      } else if (followers.get(i) <= 10000){
+        fill(#4896FF);
       } else {
         fill(#2CF700);
       }
