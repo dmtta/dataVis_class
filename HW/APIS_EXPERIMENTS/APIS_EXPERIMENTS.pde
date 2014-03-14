@@ -17,6 +17,7 @@ JSONArray statuses;
 ArrayList<String> myQuery; 
 ArrayList<Integer> followers;
 PFont font;
+PFont bigFont;
 String newSearch;
 
 TembooSession session; // Included in the Temboo Library, creates a TembooSession object.
@@ -24,29 +25,29 @@ int start;//keeps track of time only when we update, not continuously
 
 void setup() {
 
-  size(1800, 800);
+  size(1200, 800);
+  colorMode(HSB);
   creds = loadStrings("creds.csv");
-  newSearch = "Obama";
+  newSearch = "";
   font = loadFont("Nove.vlw");
+  bigFont = loadFont("CourierBig.vlw");
   textFont(font);
   start = millis();//update the 'stop-watch'
   myQuery = new ArrayList<String>();
   followers = new ArrayList<Integer>();
 
   session = new TembooSession(creds[0], creds[1], creds[2]); //Temboo's way of asking for my credentials.
-  runTweetsChoreo(); // Shit Temboo Does
-  getTweets();
-  background(0);
 }
 
 void runTweetsChoreo() {
 
   Tweets tweetsChoreo = new Tweets(session);  // Create the Choreo object using your Temboo session
   tweetsChoreo.setCredential(creds[3]);  // Set credential
-  tweetsChoreo.setCount("30");
+  tweetsChoreo.setCount("25");
   tweetsChoreo.setQuery(newSearch);   // Set inputs
   TweetsResultSet tweetsResults = tweetsChoreo.run();   // Run the Choreo and store the results
   searchResults = parseJSONObject(tweetsResults.getResponse());
+  getTweets();
 }
 
 void getTweets() {
@@ -68,30 +69,48 @@ void getTweets() {
 }
 
 void draw() {
-  fill(255);
-  rect (20, 5, 1500, 20);
-  fill(0);
-  text(" Latest Tweets pulled from the search: " + newSearch + " // Blue: Very Influential // Green: Influential // Red: Not Influential.", 20, 20);
-int tweetYPos = 50 ;
-  for (int i=0; i<myQuery.size();i++) {
+  background(0);
+  if (myQuery.size() == 0) {
+    fill(255);
+    rect(100,360,700,3);
+    rect(100,490,700,3);
+    textFont(bigFont);
+    text("Data Visualization: API Twitter Demo.", 100, height/2-50);
+    text("Latest Tweets Influence Check\nType your search and press ENTER: \n\nSearch: "+ newSearch + "_", 100, height/2);
+    textFont(font);
+  }
+  else
+  {
+    drawTweets();
+  }
+}
 
-    if (followers.get(i) <= 200 ) {
-      fill(200, 50, 50);
-    } 
-    else if (followers.get(i) <= 2000) {
-      fill(255);
-    } 
-    else if (followers.get(i) <= 10000) {
-      fill(#4896FF);
-    } 
-    else {
-      fill(#2CF700);
+
+void keyPressed() {
+    if (keyCode == ENTER) {
+      runTweetsChoreo();
+    }else if (keyCode == BACKSPACE){
+      newSearch = newSearch.substring(0,newSearch.length()-1);
+}else{
+      newSearch += key;
     }
+  }
+
+
+void drawTweets() {
+  fill(255);
+  rect (20, 5, width-40, 25);
+  fill(0);
+  text(" Latest 25 Tweets pulled from the search: " + newSearch + " // Influence is displayed by the brightness of the text", 20, 22);
+  int tweetYPos = 50 ;
+  for (int i=0; i<myQuery.size();i++) {
+    float textColor = map(followers.get(i), 0, 5000, 50, 255);
+    fill(255, textColor, textColor);
     text(myQuery.get(i), 20, tweetYPos);
-    fill(50);
-     text("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------", 20, tweetYPos + 15);
-    
+    fill(100);
+    text("---------------------------------------------------------------------------------------------------------------------------------------------------------------------", 20, tweetYPos + 15);
     tweetYPos += 30;
+   
   }
 }
 

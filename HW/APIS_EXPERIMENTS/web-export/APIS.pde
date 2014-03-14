@@ -18,7 +18,7 @@ ArrayList<String> myQuery;
 ArrayList<Integer> followers;
 PFont font;
 String newSearch;
-
+int tweetYPos;
 TembooSession session; // Included in the Temboo Library, creates a TembooSession object.
 int start;//keeps track of time only when we update, not continuously
 
@@ -26,13 +26,13 @@ void setup() {
 
   size(1800, 800);
   creds = loadStrings("creds.csv");
-  newSearch = "Obama";
+  newSearch = "Gianordoli";
   font = loadFont("Nove.vlw");
   textFont(font);
   start = millis();//update the 'stop-watch'
   myQuery = new ArrayList<String>();
   followers = new ArrayList<Integer>();
-
+  tweetYPos = 50;
   session = new TembooSession(creds[0], creds[1], creds[2]); //Temboo's way of asking for my credentials.
   runTweetsChoreo(); // Shit Temboo Does
   getTweets();
@@ -43,7 +43,6 @@ void runTweetsChoreo() {
 
   Tweets tweetsChoreo = new Tweets(session);  // Create the Choreo object using your Temboo session
   tweetsChoreo.setCredential(creds[3]);  // Set credential
-  tweetsChoreo.setCount("30");
   tweetsChoreo.setQuery(newSearch);   // Set inputs
   TweetsResultSet tweetsResults = tweetsChoreo.run();   // Run the Choreo and store the results
   searchResults = parseJSONObject(tweetsResults.getResponse());
@@ -60,7 +59,6 @@ void getTweets() {
     int influence = user.getInt("followers_count");
     String screen_name = user.getString("screen_name");
     String tweetText = tweet.getString("text"); // Pull the tweet text from tweet JSON object
-    tweetText = tweetText.replaceAll("[\r\n]+", " ");
     String tweetLine = ("@"+ screen_name + " : " + tweetText);
     myQuery.add(tweetLine);
     followers.add(influence);
@@ -72,7 +70,7 @@ void draw() {
   rect (20, 5, 1500, 20);
   fill(0);
   text(" Latest Tweets pulled from the search: " + newSearch + " // Blue: Very Influential // Green: Influential // Red: Not Influential.", 20, 20);
-int tweetYPos = 50 ;
+
   for (int i=0; i<myQuery.size();i++) {
 
     if (followers.get(i) <= 200 ) {
@@ -88,10 +86,8 @@ int tweetYPos = 50 ;
       fill(#2CF700);
     }
     text(myQuery.get(i), 20, tweetYPos);
-    fill(50);
-     text("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------", 20, tweetYPos + 15);
-    
     tweetYPos += 30;
   }
 }
+
 
