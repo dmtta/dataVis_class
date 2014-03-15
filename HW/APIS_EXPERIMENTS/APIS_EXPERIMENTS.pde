@@ -107,7 +107,7 @@ void drawTweets() {
   int tweetYPos = 50 ;
   for (int i=0; i<myQuery.size();i++) {
     float textColor = map(followers.get(i), 0, 5000, 50, 255);
-    fill(255, textColor, textColor);
+    fill(textColor,textColor,255);
     text(myQuery.get(i), 20, tweetYPos);
     fill(100);
     text("---------------------------------------------------------------------------------------------------------------------------------------------------------------------", 20, tweetYPos + 15);
