@@ -55,6 +55,7 @@ void getTweets() {
   statuses = searchResults.getJSONArray("statuses"); // Create a JSON array of the Twitter statuses in the object
 
   for (int i=0; i<statuses.size();i++) {
+    
     JSONObject tweet = statuses.getJSONObject(i); // Grab the first tweet and put it in a JSON object
     JSONObject user = tweet.getJSONObject("user"); // Grab the user name from the json object of the first tweet and grab the "user" 
     //println ("NUEVO: " + tweet);
@@ -64,6 +65,7 @@ void getTweets() {
     tweetText = tweetText.replaceAll("[\r\n]+", " ");
     String tweetLine = ("@"+ screen_name + " : " + tweetText);
     myQuery.add(tweetLine);
+
     followers.add(influence);
   }
 }
