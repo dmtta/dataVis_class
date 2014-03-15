@@ -2,7 +2,7 @@
 // D.Mastretta, March 2014
 // APIS Project
 // Data extracted from Twitter's API by request. Latest tweets will be pulled.
-// Credentials are removed from the file for security, to use get TEMBOO TWITTER CREDENTIALS.
+// Credentials are removed from the file for security, to use get TEMBOO TWITTER CREDENTIALS HERE: https://temboo.com/library/Library/Twitter/
 // The program fetches tweets, divides them by influential and non influential users 
 // by using RED for people with less than 200 followers, Green for people over 2000 followers and white for users in between.
 
@@ -107,7 +107,7 @@ void drawTweets() {
   int tweetYPos = 50 ;
   for (int i=0; i<myQuery.size();i++) {
     float textColor = map(followers.get(i), 0, 5000, 50, 255);
-    fill(textColor,textColor,255);
+    fill(10,textColor,255);
     text(myQuery.get(i), 20, tweetYPos);
     fill(100);
     text("---------------------------------------------------------------------------------------------------------------------------------------------------------------------", 20, tweetYPos + 15);
