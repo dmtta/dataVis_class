@@ -27,7 +27,7 @@ void setup() {
 
   size(1200, 800);
   colorMode(HSB);
-  creds = loadStrings("creds.csv");
+  creds = loadStrings("creds.csv"); 
   newSearch = "";
   font = loadFont("Nove.vlw");
   bigFont = loadFont("CourierBig.vlw");
@@ -36,7 +36,7 @@ void setup() {
   myQuery = new ArrayList<String>();
   followers = new ArrayList<Integer>();
 
-  session = new TembooSession(creds[0], creds[1], creds[2]); //Temboo's way of asking for my credentials.
+  session = new TembooSession(creds[0], creds[1], creds[2]); //Temboo's way of asking for my credentials. Information from the Temboo Application, I sent this values from my credentials file for security.
 }
 
 void runTweetsChoreo() {
