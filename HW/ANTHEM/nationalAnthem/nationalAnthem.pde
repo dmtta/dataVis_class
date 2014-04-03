@@ -20,7 +20,6 @@ void setup() {
   size(1280, 720);
   Courier = loadFont("Courier12.vlw");
   Novecento = loadFont("Novecento.vlw");
-  // rectMode(C
   textHeight = 15; 
   background(#FFFFFF);
   noStroke();
@@ -32,7 +31,7 @@ void setup() {
 
 void draw() {
 
-  float texCol = 30;
+  int texCol = 30;
   float textX = texCol;
   float textY = 70;
   int stanzas = 0;
@@ -63,10 +62,10 @@ void draw() {
 
     
 
-//    rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
+//  rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
     txt = txt+" ";                        // adds one space to the words.
     text(txt, textX, textY);              // Prints the words
-    textX = (textX + (textWidth(txt)));
+    textX = (textX + (textWidth(txt)));   // Separates the words
     
    
 //    if (mouseX > textX && mouseX < textX+textWidth(txt) && mouseY > textY-12 && mouseY < textY){
@@ -76,19 +75,22 @@ void draw() {
 //    }
 
     if (lineBreak == true) {
+      
       textX = texCol;
       textY = textY + 20;
       lineBreak = false;
+      
     }
     if (verseBreak == true) {
-      textX = texCol;
+     
+      stanzas++;
       textY = textY + 20;
       lineBreak = false;
-      stanzas++;
-
+ 
       if (stanzas%3 == 0) {
         texCol += 320;
         textY = 70;
+        
       }
     }
   }
