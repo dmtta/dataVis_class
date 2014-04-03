@@ -27,6 +27,7 @@ void setup() {
   lyrics = new ArrayList<Concept>();                      // make a name for the ArrayList of 'Concepts'
   String[] rawData = loadStrings("anthemTable.tsv");      // load the Anthem file
   parseData(rawData);                                     // run the Parsing function
+  
 }
 
 void draw() {
@@ -42,16 +43,14 @@ void draw() {
   for (int i=0; i<lyrics.size();  i++) {
 
     fullColors(i);
-
-
+    
     textFont(Courier);
+    
     text ("The following is a graphical\nrepresentation of a national anthem.\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.", 990, 270);
 
     String txt = lyrics.get(i).words; // Creates a new String that adds the text and needed space, makes rest of code easier
-   
     boolean lineBreak = false;
     boolean verseBreak = false;
-    boolean mouseInside = false;
 
     if (txt.indexOf("%") != -1) { // Searches each word, if the % is present then the code is executed. I used that as a line break in tables
       txt = txt.substring(0, txt.length()-1);
@@ -62,19 +61,28 @@ void draw() {
       verseBreak = true;
     }
 
-    rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
+    
+
+//    rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
     txt = txt+" ";                        // adds one space to the words.
     text(txt, textX, textY);              // Prints the words
     textX = (textX + (textWidth(txt)));
+    
+   
+//    if (mouseX > textX && mouseX < textX+textWidth(txt) && mouseY > textY-12 && mouseY < textY){
+//     println("inside"); 
+//    }else{
+//     println("outside");
+//    }
 
     if (lineBreak == true) {
       textX = texCol;
-      textY += 20;
+      textY = textY + 20;
       lineBreak = false;
     }
     if (verseBreak == true) {
       textX = texCol;
-      textY += 20;
+      textY = textY + 20;
       lineBreak = false;
       stanzas++;
 
