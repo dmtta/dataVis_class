@@ -20,6 +20,7 @@ void setup() {
   size(1280, 720);
   Courier = loadFont("Courier12.vlw");
   Novecento = loadFont("Novecento.vlw");
+  // rectMode(C
   textHeight = 15; 
   background(#FFFFFF);
   noStroke();
@@ -31,7 +32,7 @@ void setup() {
 
 void draw() {
 
-  int texCol = 30;
+  float texCol = 30;
   float textX = texCol;
   float textY = 70;
   int stanzas = 0;
@@ -60,38 +61,46 @@ void draw() {
       verseBreak = true;
     }
 
-    
+    if (mouseX > textX && mouseX < textX+textWidth(txt)
+        && mouseY > textY - 12 && mouseY < textY - 12 + textHeight){
+//     println(txt); 
+      fill(230, 230, 0);
+    }
+//    else{
+//     println("outside");
+//    }    
 
-//  rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
+    rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
     txt = txt+" ";                        // adds one space to the words.
     text(txt, textX, textY);              // Prints the words
-    textX = (textX + (textWidth(txt)));   // Separates the words
+    textX = (textX + (textWidth(txt)));
     
-   
-//    if (mouseX > textX && mouseX < textX+textWidth(txt) && mouseY > textY-12 && mouseY < textY){
-//     println("inside"); 
-//    }else{
-//     println("outside");
-//    }
 
     if (lineBreak == true) {
-      
       textX = texCol;
       textY = textY + 20;
-      lineBreak = false;
-      
+// No need to set the lineBreak back to false;
+// It is created as false in every loop iteration
+// lineBreak = false;
+
     }
+    
     if (verseBreak == true) {
-     
-      stanzas++;
+      // Leaves a blank line...
       textY = textY + 20;
-      lineBreak = false;
- 
+      
+      //Increase stanzas
+      stanzas++;
+      
+      //Have we reached 3 stanzas in this column? If so...
       if (stanzas%3 == 0) {
-        texCol += 320;
-        textY = 70;
-        
-      }
+        texCol += 320;  //Jump to next column on x
+        textY = 70;     //Reset y
+      }      
+      
+      textX = texCol;   //Set (next) x to column
+// Not necessary
+// lineBreak = false;
     }
   }
 }
