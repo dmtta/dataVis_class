@@ -15,7 +15,7 @@ rugir del cañón.%	3	Roar of the cannon.
 retiemble en sus centros la tierra!%	3	The Earth may tremble at its core
 Al	0	0
 sonoro	0	0
-rugir del cañón.%%	3	0
+rugir del cañón.&%	3	0
 Ciña	0	Roar of the cannon.
 ¡Oh Patria!	2	Oh Fatherland!
 tus	0	0
@@ -53,7 +53,7 @@ te	0	0
 dio.%	0	0
 ¡Un soldado en cada hijo	3	There is a soldier all of your sons
 te	0	0
-dio!%%	0	0
+dio!&%	0	0
 En	0	0
 sangrientos combates	3	Bloody Combats
 los	0	0
@@ -90,7 +90,7 @@ ornar.%	0	0
 ¡Volverán	0	0
 inmortales	0	0
 a	0	0
-ornar!%%	0	0
+ornar!&%	0	0
 Como	0	0
 al	0	0
 golpe del rayo	3	Strike of a Thunder
@@ -116,7 +116,8 @@ más	0	0
 de	0	0
 tus	0	0
 hijos	0	0
-la sangre% se derrama	3	The blood spills
+la sangre%	3	The blood spills
+se derrama	3	The blood spills
 en	0	0
 contienda	0	0
 de	0	0
@@ -125,7 +126,7 @@ solo	0	0
 encuentre	0	0
 el acero en sus manos%	3	The steel in his hands
 quien tu nombre sagrado insultó.%	3	He whom Insulted your sacred name.
-¡Quien tu nombre sagrado insultó!%%	0	He whom Insulted your sacred name.
+¡Quien tu nombre sagrado insultó!&%	0	He whom Insulted your sacred name.
 Del	0	0
 guerrero inmortal	3	Immortal Warrior
 de	0	0
@@ -163,7 +164,7 @@ campos de honor.%	2	The fields of Honor
 ¡Circundar	0	0
 en	0	0
 los	0	0
-campos de honor!%%	2	The fields of Honor
+campos de honor!&%	2	The fields of Honor
 Antes,	0	0
 Patria,	2	Fatherland
 que	0	0
@@ -189,9 +190,7 @@ de	0	0
 de mil héroes	2	Of a Thousand Heroes
 la patria aquí fue.%	2	Our Fatherland existed here
 ¡De mil héroes	2	Of a Thousand Heroes
-la patria aquí fue!%%	2	Our Fatherland existed here
-aquí	0	0
-fue!%%	0	0
+la patria aquí fue!&%	2	Our Fatherland existed here
 Si	0	0
 a	0	0
 la	0	0
@@ -234,7 +233,7 @@ la	0	0
 frente	0	0
 del	0	0
 bravo	0	0
-adalid!%%	0	0
+adalid!&%	0	0
 Vuelva altivo	1	Back alive
 a	0	0
 los	0	0
@@ -267,7 +266,7 @@ sabe	0	0
 a	0	0
 los	0	0
 bravos	0	0
-premiar!%%	0	0
+premiar!&%	0	0
 Y	0	0
 el	0	0
 que	0	0
@@ -311,8 +310,7 @@ de	0	0
 su	0	0
 fosa	0	0
 la	0	0
-cruz!%	0	0
-	0	0
+cruz!&%	0	0
 ¡Patria!	2	Fatherland!
 ¡Patria!	2	Fatherland!
 tus	0	0
@@ -363,4 +361,4 @@ sepulcro	3	Honorable Tomb
 para	0	0
 ellos	0	0
 de	0	0
-honor!%%	2	Honorable Tomb
+honor!&%	2	Honorable Tomb
