@@ -31,12 +31,13 @@ void setup() {
 
 void draw() {
 
-  float textX = 30;
+  float texCol = 30;
+  float textX = texCol;
   float textY = 70;
   int stanzas = 0;
-  textFont(Novecento);
+  textFont(Courier);
   fill(#000000);
-  text("NATIONAL ANTHEM",30,40);
+  text("NATIONAL ANTHEM", 30, 40);
 
   for (int i=0; i<lyrics.size();  i++) {
 
@@ -47,12 +48,10 @@ void draw() {
     text ("The following is a graphical\nrepresentation of a national anthem.\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.", 990, 270);
 
     String txt = lyrics.get(i).words; // Creates a new String that adds the text and needed space, makes rest of code easier
-    int colorNum =parseInt(lyrics.get(i).colorNumber);
+   
     boolean lineBreak = false;
     boolean verseBreak = false;
     boolean mouseInside = false;
-
-
 
     if (txt.indexOf("%") != -1) { // Searches each word, if the % is present then the code is executed. I used that as a line break in tables
       txt = txt.substring(0, txt.length()-1);
@@ -64,23 +63,23 @@ void draw() {
     }
 
     rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
-
     txt = txt+" ";                        // adds one space to the words.
     text(txt, textX, textY);              // Prints the words
     textX = (textX + (textWidth(txt)));
 
     if (lineBreak == true) {
-      textX = 30;
-      textY = textY + 20;
+      textX = texCol;
+      textY += 20;
       lineBreak = false;
     }
     if (verseBreak == true) {
-      textX = 30;
-      textY = textY + 20;
+      textX = texCol;
+      textY += 20;
       lineBreak = false;
       stanzas++;
+
       if (stanzas%3 == 0) {
-        translate(320, 0);
+        texCol += 320;
         textY = 70;
       }
     }
@@ -103,16 +102,18 @@ void parseData(String[] myTable) {                    // this is the function th
 
 void fullColors(int i) {
 
-  if (lyrics.get(i).colorNumber == 0) {
+  int colorNum =parseInt(lyrics.get(i).colorNumber);
+  
+  if (colorNum == 0) {
     fill(#000000);
   } 
-  else if (lyrics.get(i).colorNumber == 1) {
+  else if (colorNum == 1) {
     fill(#35F202);
   } 
-  else if (lyrics.get(i).colorNumber == 2) {
+  else if (colorNum == 2) {
     fill(#999999);
   }
-  else if (lyrics.get(i).colorNumber == 3) {
+  else if (colorNum == 3) {
     fill(#DE0004);
   }
 }
