@@ -20,35 +20,36 @@ void setup() {
   size(1280, 720);
   Courier = loadFont("Courier12.vlw");
   Novecento = loadFont("Novecento.vlw");
-  // rectMode(C
-  textHeight = 15; 
   background(#FFFFFF);
+  textHeight = 15; 
   noStroke();
   lyrics = new ArrayList<Concept>();                      // make a name for the ArrayList of 'Concepts'
   String[] rawData = loadStrings("anthemTable.tsv");      // load the Anthem file
   parseData(rawData);                                     // run the Parsing function
-  
 }
 
 void draw() {
 
+  background(#FFFFFF);
   float texCol = 30;
   float textX = texCol;
   float textY = 70;
   int stanzas = 0;
-  textFont(Courier);
+  textAlign(LEFT, BOTTOM);
+  textFont(Novecento);
   fill(#000000);
-  text("NATIONAL ANTHEM", 30, 40);
+  text("NATIONAL ANTHEM", 30, 50);
 
   for (int i=0; i<lyrics.size();  i++) {
 
     fullColors(i);
-    
+
     textFont(Courier);
-    
-    text ("The following is a graphical\nrepresentation of a national anthem.\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.", 990, 270);
+    textAlign(LEFT, BOTTOM);
+    text ("The following is a graphical\nrepresentation of a national anthem.\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.", 990, 340);
 
     String txt = lyrics.get(i).words; // Creates a new String that adds the text and needed space, makes rest of code easier
+    String trans = lyrics.get(i).translation;
     boolean lineBreak = false;
     boolean verseBreak = false;
 
@@ -56,51 +57,68 @@ void draw() {
       txt = txt.substring(0, txt.length()-1);
       lineBreak = true;
     }
+ 
     if (txt.indexOf("&") != -1) { // Searches each word, if the & is present then the code is executed. I used that as a verse break in tables
       txt = txt.substring(0, txt.length()-1);
       verseBreak = true;
     }
 
-    if (mouseX > textX && mouseX < textX+textWidth(txt)
-        && mouseY > textY - 12 && mouseY < textY - 12 + textHeight){
-//     println(txt); 
-      fill(230, 230, 0);
+    if (mouseX > textX && mouseX < textX+textWidth(txt) && mouseY > textY - 12 && mouseY < textY - 12 + textHeight) { 
+      int colorNum =parseInt(lyrics.get(i).colorNumber);
+      textFont(Novecento);
+      textAlign(CENTER, CENTER);
+
+      if (colorNum == 3) {
+
+
+        text(trans, width/2, 670);
+        fill(230, 230, 0);
+      } 
+      else if (colorNum == 2) {
+
+        text(trans, width/2, 670);
+        fill(230, 230, 0);
+      }
+      else if (colorNum == 1) {
+
+
+        text(trans, width/2, 670);
+        fill(230, 230, 0);
+      }
     }
-//    else{
-//     println("outside");
-//    }    
+
 
     rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
     txt = txt+" ";                        // adds one space to the words.
+    textFont(Courier);
+    textAlign(LEFT, BOTTOM);
     text(txt, textX, textY);              // Prints the words
     textX = (textX + (textWidth(txt)));
-    
+
 
     if (lineBreak == true) {
       textX = texCol;
       textY = textY + 20;
-// No need to set the lineBreak back to false;
-// It is created as false in every loop iteration
-// lineBreak = false;
-
+      
+      // No need to set the lineBreak back to false;
+      // It is created as false in every loop iteration
     }
-    
+
     if (verseBreak == true) {
+
       // Leaves a blank line...
       textY = textY + 20;
-      
+
       //Increase stanzas
       stanzas++;
-      
+
       //Have we reached 3 stanzas in this column? If so...
       if (stanzas%3 == 0) {
         texCol += 320;  //Jump to next column on x
         textY = 70;     //Reset y
       }      
-      
+
       textX = texCol;   //Set (next) x to column
-// Not necessary
-// lineBreak = false;
     }
   }
 }
@@ -122,7 +140,7 @@ void parseData(String[] myTable) {                    // this is the function th
 void fullColors(int i) {
 
   int colorNum =parseInt(lyrics.get(i).colorNumber);
-  
+
   if (colorNum == 0) {
     fill(#000000);
   } 
@@ -135,8 +153,5 @@ void fullColors(int i) {
   else if (colorNum == 3) {
     fill(#DE0004);
   }
-}
-
-void mouseClicked() {
 }
 
