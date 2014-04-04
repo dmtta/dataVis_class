@@ -1,8 +1,11 @@
-//       _   __      __  _                   __   ___          __  __                 
-//      / | / /___ _/ /_(_)___  ____  ____ _/ /  /   |  ____  / /_/ /_  ___  ____ ___ 
-//     /  |/ / __ `/ __/ / __ \/ __ \/ __ `/ /  / /| | / __ \/ __/ __ \/ _ \/ __ `__ \
-//    / /|  / /_/ / /_/ / /_/ / / / / /_/ / /  / ___ |/ / / / /_/ / / /  __/ / / / / /
-//   /_/ |_/\__,_/\__/_/\____/_/ /_/\__,_/_/  /_/  |_/_/ /_/\__/_/ /_/\___/_/ /_/ /_/ 
+//
+//        _   __      __  _                   __   ___          __  __                 
+//       / | / /___ _/ /_(_)___  ____  ____ _/ /  /   |  ____  / /_/ /_  ___  ____ ___ 
+//      /  |/ / __ `/ __/ / __ \/ __ \/ __ `/ /  / /| | / __ \/ __/ __ \/ _ \/ __ `__ \
+//     / /|  / /_/ / /_/ / /_/ / / / / /_/ / /  / ___ |/ / / / /_/ / / /  __/ / / / / /
+//    /_/ |_/\__,_/\__/_/\____/_/ /_/\__,_/_/  /_/  |_/_/ /_/\__/_/ /_/\___/_/ /_/ /_/ 
+//   --------------------------------------   ---------------------------------------
+//  --------------------------------------   ---------------------------------------
 //
 //                                         A Data Visualization Project by Daniel Mastretta Jimenez. 
 //                                         Parsons the new School for Design 2014
@@ -20,7 +23,6 @@ void setup() {
   size(1280, 720);
   Courier = loadFont("Courier12.vlw");
   Novecento = loadFont("Novecento.vlw");
-  background(#FFFFFF);
   textHeight = 15; 
   noStroke();
   lyrics = new ArrayList<Concept>();                      // make a name for the ArrayList of 'Concepts'
@@ -30,7 +32,7 @@ void setup() {
 
 void draw() {
 
-  background(#FFFFFF);
+  background(#000000);
   float texCol = 30;
   float textX = texCol;
   float textY = 70;
@@ -46,7 +48,7 @@ void draw() {
 
     textFont(Courier);
     textAlign(LEFT, BOTTOM);
-    text ("The following is a graphical\nrepresentation of a national anthem.\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.", 990, 340);
+    text ("The following is a graphical\nrepresentation of a national anthem.\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.", 990, 550);
 
     String txt = lyrics.get(i).words; // Creates a new String that adds the text and needed space, makes rest of code easier
     String trans = lyrics.get(i).translation;
@@ -63,7 +65,7 @@ void draw() {
       verseBreak = true;
     }
 
-    if (mouseX > textX && mouseX < textX+textWidth(txt) && mouseY > textY - 12 && mouseY < textY - 12 + textHeight) { 
+    if (mouseX > textX && mouseX < textX+textWidth(txt)&& mouseY > textY - 12 && mouseY < textY - 12 + textHeight) { 
       int colorNum =parseInt(lyrics.get(i).colorNumber);
       textFont(Novecento);
       textAlign(CENTER, CENTER);
@@ -87,10 +89,9 @@ void draw() {
       }
     }
 
-
+    textFont(Courier);
     rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
     txt = txt+" ";                        // adds one space to the words.
-    textFont(Courier);
     textAlign(LEFT, BOTTOM);
     text(txt, textX, textY);              // Prints the words
     textX = (textX + (textWidth(txt)));
@@ -142,13 +143,13 @@ void fullColors(int i) {
   int colorNum =parseInt(lyrics.get(i).colorNumber);
 
   if (colorNum == 0) {
-    fill(#000000);
+    fill(#222222);
   } 
   else if (colorNum == 1) {
     fill(#35F202);
   } 
   else if (colorNum == 2) {
-    fill(#999999);
+    fill(#FFFFFF);
   }
   else if (colorNum == 3) {
     fill(#DE0004);
