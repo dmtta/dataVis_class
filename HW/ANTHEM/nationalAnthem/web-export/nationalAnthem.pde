@@ -44,14 +44,12 @@ void draw() {
 
   for (int i=0; i<lyrics.size();  i++) {
 
-
+    fullColors(i);
 
     textFont(Courier);
     textAlign(LEFT, TOP);
-    fill(#FFFFFF);
     text ("Depicted here is a graphical\nrepresentation of a real \nNational Anthem.\n\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.\n\n\nWhat narrative can be read from\nthe concept behind it's words?", 990, 445);
 
-    fullColors(i);
     String txt = lyrics.get(i).words; // Creates a new String that adds the text and needed space, makes rest of code easier
     String trans = lyrics.get(i).translation;
     boolean lineBreak = false;
@@ -61,7 +59,7 @@ void draw() {
       txt = txt.substring(0, txt.length()-1);
       lineBreak = true;
     }
-
+ 
     if (txt.indexOf("&") != -1) { // Searches each word, if the & is present then the code is executed. I used that as a verse break in tables
       txt = txt.substring(0, txt.length()-1);
       verseBreak = true;
@@ -102,7 +100,7 @@ void draw() {
     if (lineBreak == true) {
       textX = texCol;
       textY = textY + 20;
-
+      
       // No need to set the lineBreak back to false;
       // It is created as false in every loop iteration
     }
@@ -147,14 +145,31 @@ void fullColors(int i) {
   if (colorNum == 0) {
     fill(#222222);
   } 
-  else if (colorNum == 2) {
+  else if (colorNum == 1) {
     fill(#35F202);
   } 
-  else if (colorNum == 1) {
+  else if (colorNum == 2) {
     fill(#FFFFFF);
   }
   else if (colorNum == 3) {
     fill(#DE0004);
+  }
+}
+
+// This class creates the objects that will be filled with the data from the .tsv
+
+class Concept {
+
+String words;
+int colorNumber;
+String translation;
+ 
+ Concept(String _words, int _colorNumber, String _translation) {
+   
+   words = _words;
+   colorNumber = _colorNumber;
+   translation = _translation;
+   
   }
 }
 
