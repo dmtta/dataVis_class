@@ -16,6 +16,7 @@
 ArrayList<Concept> lyrics;                                // Define an ArrayList of concepts, this will be the lyrics.
 PFont Courier;
 PFont Novecento;
+PFont GUI;
 int textHeight;
 
 void setup() {
@@ -23,15 +24,17 @@ void setup() {
   size(1280, 720);
   Courier = loadFont("Courier12.vlw");
   Novecento = loadFont("Novecento.vlw");
+  GUI = loadFont("GUI.vlw");
   textHeight = 15; 
   noStroke();
   lyrics = new ArrayList<Concept>();                      // make a name for the ArrayList of 'Concepts'
   String[] rawData = loadStrings("anthemTable.tsv");      // load the Anthem file
-  parseData(rawData);                                     // run the Parsing function
+  parseData(rawData);        // run the Parsing function
+
 }
 
 void draw() {
-
+  
   background(#000000);
   float texCol = 30;
   float textX = texCol;
@@ -49,6 +52,7 @@ void draw() {
     textFont(Courier);
     textAlign(LEFT, TOP);
     fill(#FFFFFF);
+    textFont(GUI);
     text ("Depicted here is a graphical\nrepresentation of a real \nNational Anthem.\n\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.\n\n\nWhat narrative can be read from\nthe concept behind it's words?", 990, 445);
 
     fullColors(i);
@@ -92,7 +96,9 @@ void draw() {
     }
 
     textFont(Courier);
+    
     rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
+
     txt = txt+" ";                        // adds one space to the words.
     textAlign(LEFT, BOTTOM);
     text(txt, textX, textY);              // Prints the words
@@ -131,7 +137,7 @@ void draw() {
 void parseData(String[] myTable) {                    // this is the function that parses the information into the objects
 
   for (int i=1; i<myTable.length; i++) {              // Runs from the second line of the table to the end (The first line is the descriptions row on the table)
-    String[] thisRow = split(myTable[i], "\t");       // Splits the table into Rows
+    String[] thisRow = split(myTable[i], "\t");       // Splits the table into Rows, when you split a table you use \t
     String tempWords = thisRow[0];                    // Select the elements in columns and store them as temporary varibales
     int tempColor = parseInt(thisRow[1]);
     String tempTranslation = thisRow[2];
@@ -158,3 +164,7 @@ void fullColors(int i) {
   }
 }
 
+void keyPressed() {
+    if (keyCode == ENTER) {
+    }
+}
