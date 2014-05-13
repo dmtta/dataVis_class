@@ -1,0 +1,16 @@
+
+// Daniel Mastretta Jiménez
+
+Visualization:  Anthem.
+
+Research and Data Source, Mexican National Anthem: http://www.diputados.gob.mx/LeyesBiblio/pdf/213.pdf
+
+All of the code is mine except from help debugging by Gabriel Gianordoli
+
+Graphical representation of a National Anthem which lyrics are forbidden to modify or publish.
+
+The Mexican National anthem was written just after the Mexican American war, a shameful international experience for the country, a National Anthem contest was issued to re establish the values of the nation. I have always been intrigued at the quantity of violent words in every stanza so I decided to analize the lyrics until I remembered it's not legal to do so with that particular song, so I wanted to tell a story showed the quantity of the war related text in the lyrics without showing the actual words, making a point and keeping it legal.  
+
+The story I picked was an act of intuition, I felt the Anthem had an unbalanced relationship between the concepts of Patriotism, Peace and War, I just was not entirely sure, this visualization would prove how much one of them is present in the lyrics against the other two. I picked the colors of the flag and their meaning as my guide to categorize and parse the data: Green for Patriotism, White for Peace and Red for War and blood of the Martyrs, I then chose to ignore the words that were connecting the concepts or just contextual. I also decided not to include a legend so the narrative could be infered instead of forced, I also did not say which country the data is from, again, to avoid partialization.
+
+The data then is visualized in bars of color that "censor" the original lyrics so you would get the real size of the anthem in a graphical way, the colors represent different parts of the narrative the anthem is supposed to represent, whenever the mouse is scrolled over the obscured words, underneath the bars the users get a slight understanding of the difference between each discourse by reading the concept behind each part of the anthem. This way users get a very fast understanding of the weight words have in the lyrics a country uses as their front anthem to the world, in the future I would like to study more than one so that they could be compared on the same grounds.

@@ -97,8 +97,9 @@ void draw() {
 
     textFont(Courier);
     
-    rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
+    rect(textX-2, textY-12, textWidth(txt)+4, textHeight); // Prints the Rectangles
 
+    fill(0);
     txt = txt+" ";                        // adds one space to the words.
     textAlign(LEFT, BOTTOM);
     text(txt, textX, textY);              // Prints the words

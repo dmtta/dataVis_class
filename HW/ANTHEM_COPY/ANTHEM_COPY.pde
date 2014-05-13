@@ -19,9 +19,14 @@ PFont Novecento;
 PFont GUI;
 int textHeight;
 
+float myScale;
+
 void setup() {
 
   size(1280, 720);
+  
+  myScale = 1;
+  
   Courier = loadFont("Courier12.vlw");
   Novecento = loadFont("Novecento.vlw");
   GUI = loadFont("GUI.vlw");
@@ -30,11 +35,11 @@ void setup() {
   lyrics = new ArrayList<Concept>();                      // make a name for the ArrayList of 'Concepts'
   String[] rawData = loadStrings("anthemTable.tsv");      // load the Anthem file
   parseData(rawData);        // run the Parsing function
-
+  setAllPositions();
 }
 
 void draw() {
-  
+  //title
   background(#000000);
   float texCol = 30;
   float textX = texCol;
@@ -45,19 +50,31 @@ void draw() {
   fill(#FFFFFF);
   text("Anthem", 30, 95);
 
+  //GUI
+  textFont(Courier);
+  textAlign(LEFT, TOP);
+  fill(#FFFFFF);
+  textFont(GUI);
+  text ("Depicted here is a graphical\nrepresentation of a real \nNational Anthem.\n\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.\n\n\nWhat narrative can be read from\nthe concept behind it's words?", 990, 445);
+
+  for(Concept c : lyrics){
+    c.display();  
+  }
+  
+}
+
+void setAllPositions() {
+  
+  float texCol = 30;
+  float textX = texCol;
+  float textY = 123;
+  int stanzas = 0;
+
   for (int i=0; i<lyrics.size();  i++) {
 
+    Concept c = lyrics.get(i);
 
-
-    textFont(Courier);
-    textAlign(LEFT, TOP);
-    fill(#FFFFFF);
-    textFont(GUI);
-    text ("Depicted here is a graphical\nrepresentation of a real \nNational Anthem.\n\n\nThe country this anthem is from\nforbids the partial or full \npublication of it's lyrics anywhere\noutside of official events.\n\n\nWhat narrative can be read from\nthe concept behind it's words?", 990, 445);
-
-    fullColors(i);
-    String txt = lyrics.get(i).words; // Creates a new String that adds the text and needed space, makes rest of code easier
-    String trans = lyrics.get(i).translation;
+    String txt = c.words; // Creates a new String that adds the text and needed space, makes rest of code easier
     boolean lineBreak = false;
     boolean verseBreak = false;
 
@@ -71,39 +88,11 @@ void draw() {
       verseBreak = true;
     }
 
-    if (mouseX > textX && mouseX < textX+textWidth(txt)&& mouseY > textY - 12 && mouseY < textY - 12 + textHeight) { 
-      int colorNum =parseInt(lyrics.get(i).colorNumber);
-      textFont(Novecento);
-      textAlign(CENTER, CENTER);
-
-      if (colorNum == 3) {
-
-
-        text(trans, width/2, 665);
-        fill(230, 230, 0);
-      } 
-      else if (colorNum == 2) {
-
-        text(trans, width/2, 665);
-        fill(230, 230, 0);
-      }
-      else if (colorNum == 1) {
-
-
-        text(trans, width/2, 665);
-        fill(230, 230, 0);
-      }
-    }
-
-    textFont(Courier);
-    
-    rect(textX, textY-12, textWidth(txt), textHeight); // Prints the Rectangles
-
-    txt = txt+" ";                        // adds one space to the words.
-    textAlign(LEFT, BOTTOM);
-    text(txt, textX, textY);              // Prints the words
+    c.words = txt;
+    textFont(Courier);    
+    c.setPosAndSize(textX, textY, textWidth(txt), textHeight);
+    txt = txt+" ";
     textX = (textX + (textWidth(txt)));
-
 
     if (lineBreak == true) {
       textX = texCol;
@@ -134,6 +123,7 @@ void draw() {
 
 
 
+
 void parseData(String[] myTable) {                    // this is the function that parses the information into the objects
 
   for (int i=1; i<myTable.length; i++) {              // Runs from the second line of the table to the end (The first line is the descriptions row on the table)
@@ -146,42 +136,24 @@ void parseData(String[] myTable) {                    // this is the function th
   }
 }
 
-void fullColors(int i) {
 
-  int colorNum =parseInt(lyrics.get(i).colorNumber);
-
-  if (colorNum == 0) {
-    fill(#222222);
-  } 
-  else if (colorNum == 2) {
-    fill(#35F202);
-  } 
-  else if (colorNum == 1) {
-    fill(#FFFFFF);
-  }
-  else if (colorNum == 3) {
-    fill(#DE0004);
-  }
-}
 
 void keyPressed() {
+  println(key);
+  if(key == '1' ){
+//    println("hey" );
+    myScale = 1;
+  }else if(key == '2' ){
+    myScale = 2;
+  }else if(key == '3' ){
+    myScale = 3;
+  }
+  
+//  myScale = 48 - parseFloat(key);
+//  println(myScale);
+//  PVector thisPos = new PVector(320, 20);
+//  thisPos.mult(myScale);
+//  println(thisPos);
     if (keyCode == ENTER) {
     }
 }
-// This class creates the objects that will be filled with the data from the .tsv
-
-class Concept {
-
-String words;
-int colorNumber;
-String translation;
- 
- Concept(String _words, int _colorNumber, String _translation) {
-   
-   words = _words;
-   colorNumber = _colorNumber;
-   translation = _translation;
-   
-  }
-}
-
