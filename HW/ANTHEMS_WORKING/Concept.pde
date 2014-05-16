@@ -23,7 +23,7 @@ String translation;
     int colorNum =parseInt(i);
   
   
-    if (colorNum == 0) {             // contextual
+    if (colorNum == 0) {        // contextual
       myColor = color(#555555);
     } 
     if (colorNum == 1) {        // Peace/God

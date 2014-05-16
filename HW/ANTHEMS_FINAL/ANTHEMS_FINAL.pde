@@ -26,11 +26,12 @@ PFont ACaslon24;
 PFont GUI;
 int textHeight;
 float myScale;
+int selectedMeaning;
 
 void setup() {
 
   size(1280, 720);
-  
+  selectedMeaning = -1;
   myScale = 2.2;
   
   Courier = loadFont("Courier12.vlw");
@@ -374,7 +375,40 @@ void parseData(String[] myTable, String country) {                    // this is
   }
 }
 
-
+void mousePressed(){
+  Boolean somethingSelected = false;
+  for(Concept c : mexico){
+    if(c.isOver()){
+        selectedMeaning = c.meaning;
+        println(selectedMeaning);
+        somethingSelected = true;      
+    }  
+  }
+  for(Concept c : usa){
+    if(c.isOver()){
+        selectedMeaning = c.meaning;
+        println(selectedMeaning);
+        somethingSelected = true;      
+    }  
+  }
+  for(Concept c : brazil){
+    if(c.isOver()){
+        selectedMeaning = c.meaning;
+        println(selectedMeaning);
+        somethingSelected = true;      
+    }  
+  }
+   for(Concept c : france){
+    if(c.isOver()){
+        selectedMeaning = c.meaning;
+        println(selectedMeaning);
+        somethingSelected = true;      
+    }  
+  }
+  if(!somethingSelected){
+    selectedMeaning = -1;
+  }
+}
 
 void keyPressed() {
   println(key);

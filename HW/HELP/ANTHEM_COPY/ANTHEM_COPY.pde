@@ -14,8 +14,6 @@
 //
 
 
-import processing.pdf.*;
-
 ArrayList<Concept> mexico;                                // Define an ArrayList of concepts.
 ArrayList<Concept> usa;
 ArrayList<Concept> brazil;
@@ -27,9 +25,15 @@ PFont GUI;
 int textHeight;
 float myScale;
 
+int selectedMeaning;
+
+
+
 void setup() {
 
   size(1280, 720);
+  
+  selectedMeaning = -1;
   
   myScale = 2.2;
   
@@ -86,7 +90,7 @@ void draw() {
   textFont(ACaslon24);
   text("Mexico", 294, 30);
   rect(294,55,580,1);
-  text("United States", 944, 30);
+  text("USA", 944, 30);
   rect(944,55,300,1);
   text("Brazil", 294, 380);
   rect(294,405,580,1);
@@ -97,28 +101,7 @@ void draw() {
   textAlign(LEFT, TOP);
   fill(#FFFFFF);
   textFont(GUI);
-  text ("Depicted here are the lyrics\nof four Official National Anthems.\n\n\nAnthems carry narratives that\ncan be inferred and read\nby analyzing in detail the intention\nof the words written in them.\n\n\nWhat national narratives can be seen by\nthe concept behind their words?\n\n\n What differences and similarities\nlie within the songs that represent\neach of the countries?\n\n\nScroll over any word to separate\neach topic and reveal\nwhat every hymn is talking about.\n\n\nLegend:", 30, 150);
-  fill(#FFFFFF);
-  rect(30,505,230,20);
-   fill(#FCFC0F);
-  rect(30,535,230,20);
-   fill(#FF4040);
-  rect(30,565,230,20);
-   fill(#F240FF);
-  rect(30,595,230,20);
-   fill(#82FF40);
-  rect(30,625,230,20);
-   fill(#4088FF);
-  rect(30,655,230,20);
-  fill(#000000);
-  text("PEACE / HEAVEN / GOD",35,510);
-  text("PATRIOTISM / VICTORY",35,540);
-  text("BLOOD / WAR / BATTLE",35,570);
-  text("NATIONAL PRIDE",35,600);
-  text("NATURAL RESOURCES / BEAUTY",35,630);
-  text("FREEDOM / PROSPERITY / FUTURE",35,660);
-  
-  
+  text ("Depicted here are the lyrics\nof four Official National Anthems.\n\n\nAnthems carry narratives that\ncan be inferred and read\nby analyzing in detail the intention\nof the words written in them.\n\n\nWhat national narratives can be seen by\nthe concept behind their words?\n\n\n What differences and similarities\nlie within the songs that represent\neach of the countries?\n\n\nScroll over any word to separate\neach topic and reveal\nwhat every hymn is talking about.", 30, 150);
 
  
 }
@@ -374,7 +357,40 @@ void parseData(String[] myTable, String country) {                    // this is
   }
 }
 
-
+void mousePressed(){
+  Boolean somethingSelected = false;
+  for(Concept c : mexico){
+    if(c.isOver()){
+        selectedMeaning = c.meaning;
+        println(selectedMeaning);
+        somethingSelected = true;      
+    }  
+  }
+  for(Concept c : usa){
+    if(c.isOver()){
+        selectedMeaning = c.meaning;
+        println(selectedMeaning);
+        somethingSelected = true;      
+    }  
+  }
+  for(Concept c : brazil){
+    if(c.isOver()){
+        selectedMeaning = c.meaning;
+        println(selectedMeaning);
+        somethingSelected = true;      
+    }  
+  }
+   for(Concept c : france){
+    if(c.isOver()){
+        selectedMeaning = c.meaning;
+        println(selectedMeaning);
+        somethingSelected = true;      
+    }  
+  }
+  if(!somethingSelected){
+    selectedMeaning = -1;
+  }
+}
 
 void keyPressed() {
   println(key);
@@ -387,6 +403,5 @@ void keyPressed() {
     myScale = 3;
   }
     if (keyCode == ENTER) {
-      saveFrame("line-######.tif");
     }
 }

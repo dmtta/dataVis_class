@@ -5,6 +5,7 @@ class Concept {
 String words;
 color myColor;
 String translation;
+int meaning;
 
   PVector pos;
   PVector size;
@@ -14,7 +15,7 @@ String translation;
    words = _words;
 //   colorNumber = _colorNumber;
    translation = _translation;
-   
+   meaning = _colorNumber;
    fullColors(_colorNumber);
   }
   
@@ -23,7 +24,7 @@ String translation;
     int colorNum =parseInt(i);
   
   
-    if (colorNum == 0) {             // contextual
+    if (colorNum == 0) {        // contextual
       myColor = color(#555555);
     } 
     if (colorNum == 1) {        // Peace/God
@@ -61,11 +62,17 @@ String translation;
   
   void display(){
     textFont(Courier);
-    fill(myColor);
     
-    if(isOver()){
-      fill(255, 255, 0);
+    if(selectedMeaning < 0 || selectedMeaning == meaning){
+      fill(myColor);
+      
+      if(isOver()){
+        fill(255, 255, 0);
+      }    
+    }else{
+      fill(#555555);
     }
+
     
     float posX = pos.x;
     float posY = pos.y;

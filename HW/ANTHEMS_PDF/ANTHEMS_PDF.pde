@@ -29,7 +29,7 @@ float myScale;
 
 void setup() {
 
-  size(1280, 720);
+  size(1280, 720, PDF, "anthems.pdf");
   
   myScale = 2.2;
   
