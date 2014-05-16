@@ -3,7 +3,7 @@
 //       / | / /___ _/ /_(_)___  ____  ____ _/ /  /   |  ____  / /_/ /_  ___  ____ ___ 
 //      /  |/ / __ `/ __/ / __ \/ __ \/ __ `/ /  / /| | / __ \/ __/ __ \/ _ \/ __ `__ \
 //     / /|  / /_/ / /_/ / /_/ / / / / /_/ / /  / ___ |/ / / / /_/ / / /  __/ / / / / /
-//    /_/ |_/\__,_/\__/_/\____/_/ /_/\__,_/_/  /_/  |_/_/ /_/\__/_/ /_/\___/_/ /_/ /_/ 
+//    /_/ |_/\__,_/\__/_/\____/_/ /_/\__,_/_/  /_/  |_/_/ /_/\__/_/ /_/\___/_/ /_/ /_/ ...........s
 //   --------------------------------------   ---------------------------------------
 //  --------------------------------------   ---------------------------------------
 //
@@ -94,11 +94,14 @@ void draw() {
   text("France", 944, 380);
    rect(944,405,300,1);
   
+  
   textFont(Courier);
   textAlign(LEFT, TOP);
   fill(#FFFFFF);
   textFont(GUI);
-  text ("Depicted here are the lyrics\nof four Official National Anthems.\n\n\nAnthems carry narratives that\ncan be inferred and read\nby analyzing in detail the intention\nof the words written in them.\n\n\nWhat national narratives can be seen by\nthe concept behind their words?\n\n\n What differences and similarities\nlie within the songs that represent\neach of the countries?\n\n\nScroll over any word to separate\neach topic and reveal\nwhat every hymn is talking about.\n\n\nLegend:", 30, 150);
+  text ("Depicted here are the lyrics\nof four Official National Anthems.\n\n\nAnthems carry narratives that\ncan be inferred and read\nby analyzing in detail the intention\nof the words written in them.\n\n\nWhat national narratives can be seen by\nthe concept behind their words?\n\n\n What differences and similarities\nlie within the songs that represent\neach of the countries?\n\n\nClick any word to separate\neach topic and reveal\nwhat every hymn is talking about.\n\n\nLegend:", 30, 150);
+  fill(#222222);
+  text("A Data Visualization Project by Daniel Mastretta Jimenez. Parsons the new School for Design 2014 // Special Thanks. Gabriel Gianordoli, Namreta Kumar, Matthew Epler.",30,height-20);
   fill(#FFFFFF);
   rect(30,505,230,20);
    fill(#FCFC0F);

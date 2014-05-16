@@ -63,11 +63,11 @@ int meaning;
   void display(){
     textFont(Courier);
     
-    if(selectedMeaning < 0 || selectedMeaning == meaning){
+    if(selectedMeaning < 1 || selectedMeaning == meaning){
       fill(myColor);
       
       if(isOver()){
-        fill(255, 255, 0);
+        fill(255, 155, 100);
       }    
     }else{
       fill(#555555);
