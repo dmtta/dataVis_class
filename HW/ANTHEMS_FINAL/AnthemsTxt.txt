@@ -1,0 +1,22 @@
+
+// Daniel Mastretta Jiménez
+
+Visualization:  National Anthems.
+
+Research and Data Sources:
+Mexican National Anthem: http://www.diputados.gob.mx/LeyesBiblio/pdf/213.pdf
+USA Anthem: http://en.wikipedia.org/wiki/The_Star-Spangled_Banner
+BRAZIL Anthem: http://en.wikipedia.org/wiki/Brazilian_National_Anthem
+FRANCE Anthem: http://en.wikipedia.org/wiki/La_Marseillaise
+
+Code: Daniel Mastretta
+Debugging: Gabriel Gianordoli
+Language Checks: Namreta Kumar (ENG), Gabor Tankovics (FRA), Gabriel Gianordoli (BRA)
+
+Graphical representation of National Anthems in terms of their general topics to visualize underlying narratives by comparison. 
+
+The Mexican National anthem was written just after the Mexican American war, a shameful international experience for the country, a National Anthem contest was issued to re establish the values of the nation. I have always been intrigued at the quantity of violent words in every stanza so I decided to analyse the lyrics and wondered if other languages and countries had embedded narratives on the lyrics of their hymns.
+
+The story I picked was an act of intuition, I felt the Anthem had an unbalanced relationship between the concepts of Patriotism, Peace and War, I just was not entirely sure, this visualization would prove how much one of them is present in the lyrics against the other two. Then by comparing it to other countries I found that there were more subjects to study that were not being reflected when I added more data.
+
+The data then is visualized in bars of colour that overlap the original lyrics so you would get the real size of the anthem in a graphical way, the colours represent different parts of the narrative the anthem is supposed to represent, whenever the mouse is clicked over the coloured words, the users get to see only that colour, slightly understanding of the difference between each discourse in each country by reading the concept behind each part of the anthem. This way users get a very fast understanding of the weight words have in the lyrics a country uses as their front anthem to the world, in the future, expanding this with more songs would get a broader spectrum but today it shows the data has a story to tell.
